@@ -79,6 +79,15 @@ fn_alert_config(){
 	alertbody="${servicename} has recieved a new _default.cfg. Check file for changes."
 }
 
+fn_alert_start(){
+	fn_script_log_info "Sending alert: Server started"
+	alertsubject="Alert - ${servicename} - Server started"
+	alertemoji="✔️"
+	alertsound="1"
+	alerturl="not enabled"
+	alertbody="${servicename} has just been started"
+}
+
 if [ "${alert}" == "permissions" ]; then
 	fn_alert_permissions
 elif [ "${alert}" == "restart" ]; then
@@ -91,6 +100,8 @@ elif [ "${alert}" == "update" ]; then
 	fn_alert_update
 elif [ "${alert}" == "config" ]; then
 	fn_alert_config
+elif[ "${alert}" == "start" ]; then
+	fn_alert_start
 fi
 
 # Generate alert log.
