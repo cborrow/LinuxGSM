@@ -181,6 +181,11 @@ fn_sleep_time
 	else
 		fn_print_ok "${servername}"
 		fn_script_log_pass "Started ${servername}"
+		
+		if [ "${alertonstart}" == "yes"] || [ "${alertonstart}" == "1" ]|| [ "${alertonstart}" == "on" ]; then
+			alert="start"
+			alert.sh
+		fi
 	fi
 	rm "${lgsmlogdir}/.${servicename}-tmux-error.tmp"
 	echo -en "\n"
